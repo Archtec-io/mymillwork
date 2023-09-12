@@ -53,12 +53,12 @@ end,
 
 on_construct = function(pos)
 	local meta = minetest.get_meta(pos)
-	meta:set_string("formspec", "invsize[10,11;]"..
+	meta:set_string("formspec", "size[10,11;]"..
 		"background[-0.15,-0.25;10.40,11.75;mymillwork_background.png]"..
 		"list[current_name;ingot;7,5.5.5;1,1;]"..
-		"list[current_name;res;8.5,5.5;1,1;]"..
+		"list[current_name;res;8,5.5;1,1;]"..
 		"label[7,5;Input:]"..
-		"label[8.5,5;Output:]"..
+		"label[8,5;Output:]"..
 		"label[0,0;Choose Millwork:]"..
 
 		"label[0.5,0.5;Crown Mould]"..
@@ -79,19 +79,15 @@ on_construct = function(pos)
 		"image_button[8.5,2.5;1,1;mymillwork_mach13.png;column_quarter_fancybase; ]"..
 
 		"label[0.5,3.5;Ceiling and Beams]"..
-		"image_button[0.5,4;1,1;mymillwork_mach14.png;ceiling; ]"..
-		"image_button[1.5,4;1,1;mymillwork_mach15.png;ceiling_post; ]"..
-		"image_button[2.5,4;1,1;mymillwork_mach16.png;beam; ]"..
-		"image_button[3.5,4;1,1;mymillwork_mach17.png;beam_t; ]"..
-		"image_button[4.5,4;1,1;mymillwork_mach18.png;beam_ceiling_t; ]"..
+		"image_button[0.5,4;1,1;mymillwork_mach16.png;beam; ]"..
+		"image_button[1.5,4;1,1;mymillwork_mach17.png;beam_t; ]"..
 
 		"label[0.5,5;Base]"..
 		"image_button[0.5,5.5;1,1;mymillwork_mach19.png;base; ]"..
-		"image_button[1.5,5.5;1,1;mymillwork_mach20.png;base_ic; ]"..
-		"image_button[2.5,5.5;1,1;mymillwork_mach21.png;base_oc; ]"..
-		"image_button[3.5,5.5;1,1;mymillwork_mach22.png;base_fancy; ]"..
-		"image_button[4.5,5.5;1,1;mymillwork_mach23.png;base_fancy_ic; ]"..
-		"image_button[5.5,5.5;1,1;mymillwork_mach24.png;base_fancy_oc; ]"..
+		"image_button[1.5,5.5;1,1;mymillwork_mach21.png;base_oc; ]"..
+		"image_button[2.5,5.5;1,1;mymillwork_mach22.png;base_fancy; ]"..
+		"image_button[3.5,5.5;1,1;mymillwork_mach23.png;base_fancy_ic; ]"..
+		"image_button[4.5,5.5;1,1;mymillwork_mach24.png;base_fancy_oc; ]"..
 		"list[current_player;main;1,7;8,4;]")
 	meta:set_string("infotext", "Millwork Machine")
 	local inv = meta:get_inventory()
@@ -116,13 +112,9 @@ or fields["column_quarter"]
 or fields["column_quarter_base"]
 or fields["column_quarter_wbase"]
 or fields["column_quarter_fancybase"]
-or fields["ceiling"]
-or fields["ceiling_post"]
 or fields["beam"]
 or fields["beam_t"]
-or fields["beam_ceiling_t"]
 or fields["base"]
-or fields["base_ic"]
 or fields["base_oc"]
 or fields["base_fancy"]
 or fields["base_fancy_ic"]
@@ -201,18 +193,6 @@ then
 		anzahl = "2"
 		shape = "mymillwork:column_quarter_fancybase_"
 
---Ceiling
-
-	elseif fields["ceiling"] then
-		make_ok = "0"
-		anzahl = "6"
-		shape = "mymillwork:ceiling_"
-
-	elseif fields["ceiling_post"] then
-		make_ok = "0"
-		anzahl = "4"
-		shape = "mymillwork:ceiling_post_"
-
 --Beam
 
 	elseif fields["beam"] then
@@ -225,22 +205,12 @@ then
 		anzahl = "2"
 		shape = "mymillwork:beam_t_"
 
-	elseif fields["beam_ceiling_t"] then
-		make_ok = "0"
-		anzahl = "2"
-		shape = "mymillwork:beam_ceiling_t_"
-
 --Base
-
+	
 	elseif fields["base"] then
 		make_ok = "0"
 		anzahl = "8"
 		shape = "mymillwork:base_"
-
-	elseif fields["base_ic"] then
-		make_ok = "0"
-		anzahl = "4"
-		shape = "mymillwork:base_ic_"
 
 	elseif fields["base_oc"] then
 		make_ok = "0"
