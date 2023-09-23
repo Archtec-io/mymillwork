@@ -250,7 +250,7 @@ then
 			for i = 0, anzahl-1 do
 				give[i+1]=inv:add_item("res",shape..material)
 			end
-			if not minetest.setting_getbool("creative_mode") then
+			if not minetest.is_creative_enabled(sender:get_player_name()) then
 				ingotstack:take_item()
 			end
 			inv:set_stack("ingot",1,ingotstack)
